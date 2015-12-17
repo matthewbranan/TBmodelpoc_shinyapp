@@ -5,7 +5,7 @@ library(shiny)
 shinyUI(pageWithSidebar(
 
 	# App title
-	headerPanel("Temptitle"),
+	headerPanel("Quick-calculator for scenario tree prior probability"),
 	
 	sidebarPanel(
 		numericInput("n", "Sample size:", value = 30),
