@@ -3,10 +3,10 @@ library(shiny)
 # Define a server structure
 shinyServer(function(input, output){
 	
-	output$priorprob_calc = reactive({
+	# output$priorprob_calc = reactive({
 		# input$goButton #Make the distribution randomize upon the go button
-		priorprob = (1 - (1 - (1 - input$dp)^input$n)) / (1 - (1 - (1 - input$dp)^input$n)^2)
-	})
+		# priorprob = (1 - (1 - (1 - input$dp)^input$n)) / (1 - (1 - (1 - input$dp)^input$n)^2)
+	# })
 	
 	
 	output$priorprob_plot = renderPlot({
