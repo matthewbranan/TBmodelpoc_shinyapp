@@ -25,7 +25,7 @@ shinyUI(pageWithSidebar(
 	
 	#Display the plot and caption as input by user
 	mainPanel(	#Plot the recommended prior as functions of sample size and design prevalence
-		div(class="span6",plotOutput("priorprob_plot",width="400px",height="400px")),
+		plotOutput("priorprob_plot",width="400px",height="400px")
 	)
 	
 ))
