@@ -6,4 +6,4 @@ Run in R by copy-pasting the following code into the R console:
 
   install.packages("shiny", dependencies = TRUE)
   
-  shiny::runGitHub("bobavenger1/prior0.5_shinyapp")
+  shiny::runGitHub("matthewbranan/prior0.5_shinyapp")
