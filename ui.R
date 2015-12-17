@@ -28,6 +28,10 @@ shinyUI(pageWithSidebar(
 	p("This calculator is intented to be used to estimate an uninformative prior probability for disease as used in scenario tree-type models. The estimated uninformative prior probability is uninformative in the sense that it is the prior that forces the scenario tree model to produce the same results as a parallel Bayesian model using a Uniform(0, 1) prior distribution for disease prevalence."),
 	
 	em("We note that this calculation should be considered a rough calculation because it is intended to be used to equate the output of a very simple scenario tree with a single herd, in a single year, in which no diagnostic test results were positive for the disease/pathogen in question, and no additional branches in the tree beyond the sensitivity of the diagnostic test used on individuals. This rough calculation should be secondary to a sensitivity analysis of a scenario tree model to the choice of prior probability of disease."),
+	
+	br(),
+	
+	h2("Estimated uninformed prior probability: ")
 		# Output the estimated uninformed prior probability
 		verbatimTextOutput("text"),
 		
