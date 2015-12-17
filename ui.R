@@ -26,7 +26,7 @@ shinyUI(pageWithSidebar(
 		verbatimTextOutput("text"),
 		
 		# Plot the results just like in the paper, keeping the plotting window at a standard size
-		div(class = "span6", plotOutput("priorprob_plot", width = "500px", height = "500px"))
+		div(class = "span6", plotOutput("priorprob_plot", width = "500px", height = "809px"))
 		
 		)
 	
