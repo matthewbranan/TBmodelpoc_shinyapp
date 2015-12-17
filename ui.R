@@ -12,12 +12,14 @@ shinyUI(pageWithSidebar(
 		
 		numericInput("dp", "Design prevalence:", value = 0.02),
 		
-		tableOutput("priorprob_out")
+		
 		
 		),
 		
 	mainPanel(
-		plotOutput("priorprob_plot")
+		plotOutput("priorprob_plot"),
+		
+		tableOutput("priorprob_out")
 		)
 	
 ))
