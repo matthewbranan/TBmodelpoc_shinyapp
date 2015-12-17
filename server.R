@@ -20,7 +20,7 @@ shinyServer(function(input, output){
 		})
 		
 	output$text = renderText({
-		paste0("The estimated uninformative \n prior probability is:", round(priorprob_out(), 4))
+		paste0("The estimated uninformative \n prior probability is:  ", round(priorprob_out(), 4))
 		})
 
 })
