@@ -3,7 +3,7 @@ library(shiny)
 # Define a server structure
 shinyServer(function(input, output){
 
-	output$distPlot <- renderPlot({
+	output$priorprob_plot <- renderPlot({
 		plot(input$n, input$dp)
 		})
 
