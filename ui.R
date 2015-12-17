@@ -27,5 +27,5 @@ shinyUI(pageWithSidebar(
 	mainPanel(	#Plot the recommended prior as functions of sample size and design prevalence
 		plotOutput("priorprob_plot",width="400px",height="400px")
 	)
-	
+	 
 ))
