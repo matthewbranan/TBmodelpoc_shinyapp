@@ -10,7 +10,9 @@ shinyUI(pageWithSidebar(
 	sidebarPanel(
 		numericInput("n", "Sample size:", value = 30),
 		
-		numericInput("dp", "Design prevalence:", value = 0.02)
+		numericInput("dp", "Design prevalence:", value = 0.02),
+		
+		numericOutput("priorprob_out)
 		
 		),
 		
