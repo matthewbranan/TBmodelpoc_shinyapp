@@ -31,7 +31,7 @@ shinyUI(pageWithSidebar(
 	
 	br(),
 	
-	h2("Estimated uninformed prior probability: ")
+	h2("Estimated uninformed prior probability: "),
 		# Output the estimated uninformed prior probability
 		verbatimTextOutput("text"),
 		
