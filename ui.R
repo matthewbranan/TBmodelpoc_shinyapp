@@ -18,7 +18,7 @@ shinyUI(pageWithSidebar(
 		# actionButton("goButton", "Calculate") # Have a button that will re-run the calculations upon request
 		
 		# Return the estimated prior probablity
-		numericOutput(output$priorprob_calc)
+		# numericOutput(output$priorprob_calc)
 		
 		),
 		
