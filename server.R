@@ -20,7 +20,7 @@ shinyServer(function(input, output){
 		})
 		
 	output$text = renderText({
-		paste0("The answer is:", input$n)
+		paste0("The answer is:", priorprob_out())
 		})
 
 })
