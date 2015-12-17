@@ -9,7 +9,7 @@ shinyServer(function(input, output){
 	# })
 	
 	
-	output$priorprob_plot = renderPlot({
+	output$priorprob_plot <- renderPlot({
 		# input$goButton #Re-render this plot as well with go button
 		plot(input$n, input$dp)
 		# plot(1:100, (1 - (1 - (1 - input$dp)^1:100)) / (1 - (1 - (1 - input$dp)^1:100)^2), type = "l")
