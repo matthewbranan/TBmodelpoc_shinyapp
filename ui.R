@@ -10,7 +10,11 @@ shinyUI(pageWithSidebar(
 	sidebarPanel(
 		numericInput("n", "Sample size:", value = 30),
 		
-		numericInput("dp", "Design prevalence:", value = 0.02)
+		numericInput("dp", "Design prevalence:", value = 0.02),
+		
+		numericInput("minplot", "Minimum sample size in plot:", value = 1),
+		
+		numericInput("maxplot", "Maximum sample size in plot:", value = 100)
 		
 		),
 		
