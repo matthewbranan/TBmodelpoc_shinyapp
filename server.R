@@ -4,7 +4,7 @@ library(shiny)
 shinyServer(function(input, output){
 		
 	priorprob_calc = reactive({
-		calc = (1 - (1 - (1 - input$dp)^c(input$minplot:input$maxplot))) / (1 - (1 - (1 - input$dp)^c(input$minplot:input$maxplot)^2))
+		calc = (1 - (1 - (1 - input$dp)^c(input$minplot:input$maxplot))) / (1 - (1 - (1 - input$dp)^c(input$minplot:input$maxplot))^2)
 		})
 		
 	priorprob_out = reactive({
