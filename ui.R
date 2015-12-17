@@ -12,7 +12,7 @@ shinyUI(pageWithSidebar(
 		
 		numericInput("dp", "Design prevalence:", value = 0.02),
 		
-		numericOutput("priorprob_out)
+		numericOutput("priorprob_out")
 		
 		),
 		
