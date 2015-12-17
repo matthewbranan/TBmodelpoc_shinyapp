@@ -12,7 +12,7 @@ shinyServer(function(input, output){
 	output$priorprob_plot = renderPlot({
 		# input$goButton #Re-render this plot as well with go button
 		plot(1:100, (1 - (1 - (1 - input$dp)^1:100)) / (1 - (1 - (1 - input$dp)^1:100)^2), type = "l")
-		points(input$n, output$priorprob_calc, pch = 8, col = "red")
+		# points(input$n, output$priorprob_calc, pch = 8, col = "red")
 	})
 	
 })
