@@ -8,14 +8,14 @@ shinyUI(pageWithSidebar(
 	headerPanel("Temptitle"),
 	
 	sidebarPanel(
-		numericInput("obs", 
-			"Number of Observations:",
-			value = 500)
+		numericInput("n", "Sample size:", value = 30),
+		
+		numericInput("dp", "Design prevalence:", value = 0.02)
+		
 		),
 		
 	mainPanel(
 		plotOutput("distPlot")
 		)
 	
-	 
 ))
