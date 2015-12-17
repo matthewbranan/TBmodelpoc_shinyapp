@@ -11,7 +11,7 @@ shinyServer(function(input, output){
 		calc = (1 - priorprob_sse()) / (1 - priorprob_sse()^2)
 		})
 		
-	output$priorprob_out = reactive({
+	priorprob_out = reactive({
 		out = (1 - (1 - (1 - input$dp)^input$n)) / (1 - (1 - (1 - input$dp)^input$n)^2)
 		})
 
