@@ -15,7 +15,7 @@ shinyUI(pageWithSidebar(
 		),
 		
 	mainPanel(
-		plotOutput("distPlot")
+		plotOutput("priorprob_plot")
 		)
 	
 ))
