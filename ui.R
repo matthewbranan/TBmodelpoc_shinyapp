@@ -10,14 +10,15 @@ shinyUI(pageWithSidebar(
 	sidebarPanel(
 		numericInput("n", "Sample size:", value = 30),
 		
-		numericInput("dp", "Design prevalence:", value = 0.02),
-		
-		verbatimTextOutput("text")
+		numericInput("dp", "Design prevalence:", value = 0.02)
 		
 		),
 		
 	mainPanel(
+		verbatimTextOutput("text"),
+		
 		plotOutput("priorprob_plot")
+		
 		)
 	
 ))
