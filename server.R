@@ -18,6 +18,10 @@ shinyServer(function(input, output){
 	output$priorprob_plot <- renderPlot({
 		plot(1:100, priorprob_calc(), type = "l")
 		})
+		
+	output$text = renderText({
+		paste0("The answer is:", input$n)
+		})
 
 })
  
