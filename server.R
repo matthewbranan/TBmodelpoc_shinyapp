@@ -5,7 +5,7 @@ shinyServer(function(input, output){
 
 	# Calculate the estimated prior probability for use in the plot (so, for all integers between the min and max x-axis plot limits)		
 	priorprob_calc = reactive({
-		calc = (1 - (1 - (1 - input$dp)^c(input$minplot:input$maxplot))) / (1 - (1 - (1 - input$dp)^c(input$minplot:input$maxplot))^2)
+		calc = (1 - (1 - (1 - input$dp)^c(input$minplot:input$maxplot + 1))) / (1 - (1 - (1 - input$dp)^(input$minplot:input$maxplot + 1)) * (1 - (1 - input$dp)^c(input$minplot:input$maxplot)))
 		})
 		
 	# Calculate the estimated prior probability for text output
