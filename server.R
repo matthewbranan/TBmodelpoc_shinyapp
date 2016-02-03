@@ -10,7 +10,7 @@ shinyServer(function(input, output){
 		
 	# Calculate the estimated prior probability for text output
 	priorprob_out = reactive({
-		out = (1 - (1 - (1 - input$dp)^input$n)) / (1 - (1 - (1 - input$dp)^input$n)^2)
+		out = (1 - (1 - (1 - input$dp)^(input$n + 1))) / (1 - (1 - (1 - input$dp)^(input$n + 1)) * (1 - (1 - input$dp)^input$n)^2)
 		})
 
 	# Generate the plot for the desired prior probabilities across the x-axis plotting window
