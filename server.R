@@ -54,12 +54,12 @@ shinyServer(function(input, output){
 			
 	# Store table of HPD intervals
 	summary_hpdout = reactive({
-		hpdout = HPDinterval(jagsamp, 0.95)
+		hpdout = HPDinterval(jagsamp, 0.95)[[1]]
 		})
 	
 	# Make HPD intervals output
 	output$summary_hpdout = renderTable({
-		summary_hpdout()[[1]]
+		summary_hpdout()
 		})
 	
 
