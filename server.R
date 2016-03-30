@@ -9,11 +9,13 @@ shinyServer(function(input, output){
 	
 
 	# JAGS model data
-	jagsmod_dat = list(
-		"x" = input$x,
-		"n" = input$n,
-		"hyperparmmat" = hyperparmmat,
-		)
+	jagsmod_dat = reactive({
+		list(
+			"x" = input$x,
+			"n" = input$n,
+			"hyperparmmat" = hyperparmmat,
+			)
+		})
 
 	# Define the JAGS function
 	jagsmod_txt = "
