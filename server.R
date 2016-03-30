@@ -92,7 +92,7 @@ shinyServer(function(input, output){
 		}
 
 	output$densplot_pi = renderPlot({
-		ggplot(data = jagsamp_df(), aes(eta)) + geom_histogram() + geom_density(aes(y = ..density..))
+		ggplot(data = jagsamp_df(), aes(eta)) + geom_histogram(aes(y = ..density..)) + geom_density(aes(y = ..density..))
 		})
 
 })
