@@ -27,7 +27,8 @@ shinyUI(pageWithSidebar(
 		
 		# Input for the numebr of burnin iterations and number of iterations to keep
 		numericInput("burnin", "Burnin iterations:", value = 100),
-		numericInput("MCMCreps", "MCMC iterations:", value = 1000)
+		numericInput("MCMCreps", "MCMC iterations:", value = 1000),
+		numericInput("thinterval", "Thinning interval:", value = 1)
 		
 		),
 		
