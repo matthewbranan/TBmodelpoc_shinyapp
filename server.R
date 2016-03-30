@@ -1,6 +1,7 @@
 library(shiny)
 library(rjags)
 library(coda)
+library(ggplot2)
 
 # Define a server structure
 shinyServer(function(input, output){
@@ -58,7 +59,7 @@ shinyServer(function(input, output){
 		return(jagsamp)
 
 		})
-	
+		
 
 ## Creating outputs
 	# HPD intervals output
@@ -71,6 +72,12 @@ shinyServer(function(input, output){
 		temp_sumstatout = summary(jagsamp_out())
 		round(cbind(temp_sumstatout[[1]][, c(1, 2, 4)], temp_sumstatout[[2]]), input$digits)
 		}, digits = 16)
+		
+	# Diagnostic plots
+	output$traceplot_eta = renderPlot({
+		jagsamp_df = data.frame(jagsamp_out())
+		ggplot(data = jagsamp_df, aes(x = 1:(input$MCMCreps / input$thinterval), y = eta)) + geom_line()
+		})
 
 })
  
