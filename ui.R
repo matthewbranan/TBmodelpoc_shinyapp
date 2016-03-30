@@ -43,24 +43,25 @@ shinyUI(fluidPage(
 			numericInput("MCMCreps", "MCMC iterations:", value = 1000),
 			numericInput("thinterval", "Thinning interval:", value = 1)
 		
-			)
+			),
 			
-		),
 		
-	mainPanel(
+		mainPanel(
 	
-	# Give an explanation of the application and some caveats
-	p("Explanation"),
+		# Give an explanation of the application and some caveats
+		p("Explanation"),
 	
-	em("Notes"),
+		em("Notes"),
 	
-	br(),
+		br(),
 	
-	h2("95% HPD intervals: "),
+		h2("95% HPD intervals: "),
 		
-		# Create table for HPD intervals
-		tableOutput("summary_hpdout")
+			# Create table for HPD intervals
+			tableOutput("summary_hpdout")
 
 		)
+		
+	)
 	
 )) 
