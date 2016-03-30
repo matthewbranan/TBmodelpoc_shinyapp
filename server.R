@@ -84,11 +84,11 @@ shinyServer(function(input, output){
 			my_i = i
 			plotname = c("eta", "theta", "pi")[i]
 			output[[paste0("traceplot_", plotname)]] = renderPlot({
-				ggplot(data = jagsamp_df(), aes(x = 1:1000, y = get(plotname))) + geom_line() + labs(x = "Last 1,000 iterations", y = plotname, title = paste0("Trace plot for ", plotname))
+				ggplot(data = jagsamp_df(), aes(x = 1:1000, y = get(plotname))) + geom_line(alpha = 0.5) + labs(x = "Last 1,000 iterations", y = plotname, title = paste0("Trace plot for ", plotname))
 				})
 				
 			output[[paste0("densplot_", plotname)]] = renderPlot({
-				ggplot(data = jagsamp_df(), aes(get(plotname))) + geom_histogram(aes(y = ..density..)) + geom_density(aes(y = ..density..))
+				ggplot(data = jagsamp_df(), aes(get(plotname))) + geom_histogram(aes(y = ..density..), col = "white", alpha = 0.5) + geom_density(aes(y = ..density..)) + labs(x = plotname, title = paste0("Posterior density estimate for ", plotname))
 				})
 			})
 		
