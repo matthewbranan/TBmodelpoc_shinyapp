@@ -85,6 +85,10 @@ shinyServer(function(input, output){
 	output$traceplot_theta = renderPlot({
 		ggplot(data = jagsamp_df(), aes(x = 1:1000, y = theta)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Specificity (theta)", title = "Trace plot for specificity")
 		})
+		
+	output$traceplot_pi = renderPlot({
+		ggplot(data = jagsamp_df(), aes(x = 1:1000, y = pi)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Prevalence (pi)", title = "Trace plot for prevalence")
+		})
 
 })
  
