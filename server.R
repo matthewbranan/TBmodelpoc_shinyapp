@@ -1,30 +1,61 @@
 library(shiny)
+library(rjags)
+library(coda)
 
 # Define a server structure
 shinyServer(function(input, output){
 
-	# Calculate the estimated prior probability for use in the plot (so, for all integers between the min and max x-axis plot limits)		
-	priorprob_calc = reactive({
-		calc = (1 - (1 - (1 - input$dp)^c(input$minplot:input$maxplot + 1))) / (1 - (1 - (1 - input$dp)^(input$minplot:input$maxplot + 1)) * (1 - (1 - input$dp)^c(input$minplot:input$maxplot)))
-		})
-		
-	# Calculate the estimated prior probability for text output
-	priorprob_out = reactive({
-		out = (1 - (1 - (1 - input$dp)^(input$n + 1))) / (1 - (1 - (1 - input$dp)^(input$n + 1)) * (1 - (1 - input$dp)^input$n)^2)
-		})
+	# Construct the matrix of hyperparameters 
+	
 
-	# Generate the plot for the desired prior probabilities across the x-axis plotting window
-	output$priorprob_plot <- renderPlot({
-		plot(input$minplot:input$maxplot, priorprob_calc(), type = "l", main = "Desired prior probability of infection for \n prior prevalence distribution Uniform(0, 1)", ylab = "Desired prior probability", xlab = "Design sample size")
-		grid()
-		points(input$n, priorprob_out(), pch = 8, cex = 2, col = "red")
-		legend("topright", legend = c("Estimated uninformative prior probability"), pch = 8, col = "red")
+	# JAGS model data
+	jagsmod_dat = list(
+		"x" = input$x,
+		"n" = input$n,
+		"hyperparmmat" = hyperparmmat,
+		)
+
+	# Define the JAGS function
+	jagsmod_txt = "
+		model{
+			x ~ dbinom(phi, n)
+			phi = pi * eta + (1 - pi) * (1 - theta)
+			
+			eta ~ dbeta(hyperparmmat[1, 1], hyperparmmat[1, 2])
+			theta ~ dbeta(hyperparmmat[2, 1], hyperparmmat[2, 2])
+			pi ~ dbeta(hyperparmmat[3, 1], hyperparmmat[3, 2])
+			
+			}
+		"
+	
+	# Open up a text connection
+	jagsmod_txtconnect = textConnection(jagsmod_txt)
+	
+	# Compile the JAGS model
+	jagsmod = jags.model(jagsmod_txtconnect,
+		data = jagsmod_dat,
+		n.adapt = 100,
+		n.chains = 1)
+	
+	# Burnin interval
+	update(jagsmod, burnin)
+	
+	# Sample from the conditionals
+	jagsamp = coda.samples(jagsmod,
+		variable.names = c("pi", "eta", "theta"),
+		n.iter = MCMCreps,
+		thin = thinterval)
+			
+	# Store table of HPD intervals
+	summary_hpdout = reactive({
+		hpdout = HPDinterval(jagsamp, 0.95)
 		})
 	
-	# Output for text reporting of the estimated uninformative prior probability	
-	output$text = renderText({
-		paste0(round(priorprob_out(), 4))
+	# Make HPD intervals output
+	output$summary_hpdout = renderTable({
+		summary_hpdout()[[1]]
 		})
+	
 
 })
  
