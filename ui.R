@@ -25,6 +25,10 @@ shinyUI(pageWithSidebar(
 		numericInput("alpha_theta", "alpha_theta", value = 10),
 		numericInput("beta_theta", "beta_theta", value = 1),
 		
+		# Input for hyperparameters for prevalence
+		numericInput("alpha_pi", "alpha_pi", value = 1),
+		numericInput("beta_pi", "beta_pi", value = 1),
+		
 		# Input for the numebr of burnin iterations and number of iterations to keep
 		numericInput("burnin", "Burnin iterations:", value = 100),
 		numericInput("MCMCreps", "MCMC iterations:", value = 1000),
