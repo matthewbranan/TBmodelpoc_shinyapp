@@ -47,7 +47,8 @@ shinyUI(fluidPage(
 			numericInput("burnin", "Burnin iterations:", value = 100),
 			numericInput("MCMCreps", "MCMC iterations:", value = 1000),
 			numericInput("thinterval", "Thinning interval:", value = 1),
-			sliderInput("digits", "Number of display digits:", min = 1, max = 16, value = 4),
+			numericInput("digits", "Number of display digits:", value = 4),
+			# sliderInput("digits", "Number of display digits:", min = 1, max = 16, value = 4),
 			actionButton("fitModel", "Fit model")
 		
 			)
