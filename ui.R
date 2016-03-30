@@ -12,7 +12,7 @@ shinyUI(fluidPage(
 	fluidRow(
 		column(4,
 			# Panel label
-			p("Testing data inputs"),
+			helpText("Testing data inputs"),
 	
 			# Input for the sample size
 			numericInput("n", "Sample size:", value = 100),
