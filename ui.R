@@ -24,7 +24,7 @@ shinyUI(fluidPage(
 		column(4, 
 	
 			# Panel label
-			p("Hyperparameter inputs"),
+			helpText("Hyperparameter inputs"),
 	
 			# Input for hyperparameters for sensitivity
 			numericInput("alpha_eta", "alpha_eta:", value = 10),  # expression(alpha[eta])
@@ -41,7 +41,7 @@ shinyUI(fluidPage(
 			
 		column(4,
 			# Panel label
-			p("Technical, MCMC inputs"),
+			helpText("Technical, MCMC inputs"),
 		
 			# Input for the numebr of burnin iterations and number of iterations to keep
 			numericInput("burnin", "Burnin iterations:", value = 100),
@@ -50,7 +50,6 @@ shinyUI(fluidPage(
 			actionButton("fitModel", "Fit model")
 		
 			)
-			
 			
 		),
 		
