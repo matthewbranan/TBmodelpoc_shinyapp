@@ -18,11 +18,11 @@ shinyUI(pageWithSidebar(
 		numericInput("x", "Number of positive subjects:", value = 10),
 		
 		# Include input for hyperparameters for sensitivity
-		numericInput("alpha_eta", "alpha_eta", value = 10)  # expression(alpha[eta])
-		numericInput("beta_eta", "beta_eta", value = 1)  # expression(beta[eta])
+		numericInput("alpha_eta", "alpha_eta", value = 10),  # expression(alpha[eta])
+		numericInput("beta_eta", "beta_eta", value = 1),  # expression(beta[eta])
 		
 		# Include input for hyperparameters for specificity
-		numericInput("alpha_theta", "alpha_theta", value = 10)
+		numericInput("alpha_theta", "alpha_theta", value = 10),
 		numericInput("beta_theta", "beta_theta", value = 1)
 		
 		),
