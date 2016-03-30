@@ -80,9 +80,13 @@ shinyServer(function(input, output){
 	# Diagnostic plots
 	
 	for (i in 1:3){
-		plotname = c("eta", "theta", "pi")[i]
-		output[[paste0("traceplot_", plotname)]] = renderPlot({
-			ggplot(data = jagsamp_df(), aes(x = 1:1000, y = plotname)) + geom_line() + labs(x = "Last 1,000 iterations", y = plotname, title = paste0("Trace plot for ", plotname))
+	
+		local({
+			my_i = i
+			plotname = c("eta", "theta", "pi")[i]
+			output[[paste0("traceplot_", plotname)]] = renderPlot({
+				ggplot(data = jagsamp_df(), aes(x = 1:1000, y = plotname)) + geom_line() + labs(x = "Last 1,000 iterations", y = plotname, title = paste0("Trace plot for ", plotname))
+				})
 			})
 		
 		}
