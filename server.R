@@ -35,7 +35,7 @@ shinyServer(function(input, output){
 	
 	# Compile the JAGS model
 	jagsmod = jags.model(jagsmod_txtconnect,
-		data = jagsmod_dat,
+		data = jagsmod_dat(),
 		n.adapt = 100,
 		n.chains = 1)
 	
