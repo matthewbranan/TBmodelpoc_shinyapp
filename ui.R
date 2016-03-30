@@ -9,8 +9,8 @@ shinyUI(fluidPage(
 	# App title
 	headerPanel("TB model proof of concept"),
 	
-	sidebarLayout(
-		sidebarPanel(
+	fluidRow(
+		column(4,
 			# Panel label
 			p("Testing data inputs"),
 	
@@ -19,9 +19,7 @@ shinyUI(fluidPage(
 		
 			# Input for the number of positive subjects observed
 			numericInput("x", "Number of positive subjects:", value = 10)
-		),
-		
-		sidebarPanel(
+	
 			# Panel label
 			p("Hyperparameter inputs"),
 	
@@ -45,25 +43,25 @@ shinyUI(fluidPage(
 			numericInput("MCMCreps", "MCMC iterations:", value = 1000),
 			numericInput("thinterval", "Thinning interval:", value = 1)
 		
-			),
+			)
+		)
 			
 		
-		mainPanel(
+	mainPanel(
 	
-		# Give an explanation of the application and some caveats
-		p("Explanation"),
+	# Give an explanation of the application and some caveats
+	p("Explanation"),
 	
-		em("Notes"),
+	em("Notes"),
 	
-		br(),
+	br(),
 	
-		h2("95% HPD intervals: "),
+	h2("95% HPD intervals: "),
 		
-			# Create table for HPD intervals
-			tableOutput("summary_hpdout")
+		# Create table for HPD intervals
+		tableOutput("summary_hpdout")
 
-		)
-		
 	)
+		
 	
 )) 
