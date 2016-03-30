@@ -42,7 +42,9 @@ shinyServer(function(input, output){
 		})
 	
 	# Burnin interval
-	update(jagsmod(), input$burnin)
+	jagsmod_update = reactive({
+		update(jagsmod(), input$burnin)
+		})
 	
 	# Sample from the conditionals
 	jagsamp = reactive({
