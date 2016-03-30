@@ -45,23 +45,6 @@ shinyUI(fluidPage(
 		
 			)
 		)
-			
-		
-	mainPanel(
-	
-	# Give an explanation of the application and some caveats
-	p("Explanation"),
-	
-	em("Notes"),
-	
-	br(),
-	
-	h2("95% HPD intervals: "),
-		
-		# Create table for HPD intervals
-		tableOutput("summary_hpdout")
-
-	)
 		
 	
 )) 
