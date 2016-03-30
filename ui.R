@@ -10,6 +10,8 @@ shinyUI(pageWithSidebar(
 	headerPanel("TB model proof of concept"),
 	
 	sidebarPanel(
+		# Labels for panel
+		p("Testing data inputs"),
 	
 		# Input for the sample size
 		numericInput("n", "Sample size:", value = 100),
