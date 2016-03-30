@@ -81,7 +81,7 @@ shinyServer(function(input, output){
 	
 	for (i in 1:3){
 		plotname = c("eta", "theta", "pi")[i]
-		output$paste0("traceplot_", plotname) = renderPlot({
+		output[[paste0("traceplot_", plotname)]] = renderPlot({
 			ggplot(data = jagsamp_df(), aes(x = 1:1000, y = plotname)) + geom_line() + labs(x = "Last 1,000 iterations", y = plotname, title = paste0("Trace plot for ", plotname))
 			})
 		
