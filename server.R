@@ -79,7 +79,7 @@ shinyServer(function(input, output){
 		
 	# Diagnostic plots
 	output$traceplot_eta = renderPlot({
-		jagsamp_df = data.frame(jagsamp_out()[[1]][lastgrand, ])
+		jagsamp_df = data.frame(jagsamp_out()[[1]][lastgrand(), ])
 		ggplot(data = jagsamp_df, aes(x = 1:1000, y = eta)) + geom_line()
 		})
 
