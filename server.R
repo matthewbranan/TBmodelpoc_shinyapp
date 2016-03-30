@@ -19,7 +19,7 @@ shinyServer(function(input, output){
 		list(
 			"x" = input$x,
 			"n" = input$n,
-			"hyperparmmat" = hyperparmmat
+			"hyperparmmat" = hyperparmmat()
 			)
 		})
 
