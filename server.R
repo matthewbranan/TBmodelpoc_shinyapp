@@ -69,7 +69,7 @@ shinyServer(function(input, output){
 		input$fitModel
 		summary_hpdout()
 		},
-		digits = input$digits)
+		digits = 16)
 
 
 })
