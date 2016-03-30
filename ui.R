@@ -18,7 +18,7 @@ shinyUI(fluidPage(
 			numericInput("n", "Sample size:", value = 100),
 		
 			# Input for the number of positive subjects observed
-			numericInput("x", "Number of positive subjects:", value = 10)
+			numericInput("x", "Number of positive subjects:", value = 10),
 		
 			# Panel label
 			p("Hyperparameter inputs"),
@@ -33,7 +33,7 @@ shinyUI(fluidPage(
 		
 			# Input for hyperparameters for prevalence
 			numericInput("alpha_pi", "alpha_pi:", value = 1),
-			numericInput("beta_pi", "beta_pi:", value = 1)
+			numericInput("beta_pi", "beta_pi:", value = 1),
 		
 			# Panel label
 			p("Technical, MCMC inputs"),
