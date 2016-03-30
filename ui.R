@@ -63,7 +63,14 @@ shinyUI(fluidPage(
 			# Summary statistics
 			tabPanel("Summary statistics", tableOutput("summary_sumstatout")),
 			# Diagnostic plots
-			tabPanel("Diagnostic plots", plotOutput("traceplot_eta"), br(), plotOutput("traceplot_theta"), br(), plotOutput("traceplot_pi"))
+			tabPanel("Trace plots", 
+				plotOutput("traceplot_eta"), br(), 
+				plotOutput("traceplot_theta"), br(), 
+				plotOutput("traceplot_pi"))
+			tabPanel("ACF plots", 
+				plotOutput("acfplot_eta"), br(), 
+				plotOutput("acfplot_theta"), br(), 
+				plotOutput("acfplot_pi"))
 			)
 			
 		)
