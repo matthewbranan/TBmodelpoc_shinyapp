@@ -57,9 +57,8 @@ shinyUI(fluidPage(
 		# Set up panels for various types of output
 		tabsetPanel(
 			# Create table for HPD intervals
-			tabPanel("95% HPD intervals", tableOutput("summary_hpdout")),
-			tabPanel("test", textOutput("summary_hpdout"))
-			
+			tabPanel("95% HPD intervals", tableOutput("summary_hpdout"))
+
 			)
 			
 		)
