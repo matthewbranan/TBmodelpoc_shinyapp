@@ -66,7 +66,7 @@ shinyUI(fluidPage(
 			tabPanel("Trace plots", 
 				plotOutput("traceplot_eta"), br(), 
 				plotOutput("traceplot_theta"), br(), 
-				plotOutput("traceplot_pi"))
+				plotOutput("traceplot_pi")),
 			tabPanel("ACF plots", 
 				plotOutput("acfplot_eta"), br(), 
 				plotOutput("acfplot_theta"), br(), 
