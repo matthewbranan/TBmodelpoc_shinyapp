@@ -61,16 +61,16 @@ shinyServer(function(input, output){
 
 	# Store table of HPD intervals
 	summary_hpdout = reactive({
-		hpdout = HPDinterval(jagsamp_out(), 0.95)[[1]]
+		hpdout = round(HPDinterval(jagsamp_out(), 0.95)[[1]], input$digits)
 		})
-	observe({
+
 	# Make HPD intervals output
 	output$summary_hpdout = renderTable({
 		input$fitModel
 		summary_hpdout()
 		},
-		digits = input$digits)
-	})
+		digits = 16)
+
 
 })
  
