@@ -42,19 +42,19 @@ shinyServer(function(input, output){
 		})
 	
 	# Burnin interval
-	update(jagsmod, burnin)
+	update(jagsmod(), input$burnin)
 	
 	# Sample from the conditionals
 	jagsamp = reactive({
-		coda.samples(jagsmod,
+		coda.samples(jagsmod(),
 			variable.names = c("pi", "eta", "theta"),
-			n.iter = MCMCreps,
-			thin = thinterval)
+			n.iter = input$MCMCreps,
+			thin = input$thinterval)
 		})
 			
 	# Store table of HPD intervals
 	summary_hpdout = reactive({
-		hpdout = HPDinterval(jagsamp, 0.95)[[1]]
+		hpdout = HPDinterval(jagsamp(), 0.95)[[1]]
 		})
 	
 	# Make HPD intervals output
