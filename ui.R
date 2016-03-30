@@ -36,8 +36,10 @@ shinyUI(fluidPage(
 		
 			# Input for hyperparameters for prevalence
 			numericInput("alpha_pi", "alpha_pi:", value = 1),
-			numericInput("beta_pi", "beta_pi:", value = 1),
-		
+			numericInput("beta_pi", "beta_pi:", value = 1)
+			),
+			
+		column(4,
 			# Panel label
 			p("Technical, MCMC inputs"),
 		
