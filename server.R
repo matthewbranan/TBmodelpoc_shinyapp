@@ -79,9 +79,12 @@ shinyServer(function(input, output){
 		
 	# Diagnostic plots
 	output$traceplot_eta = renderPlot({
-		ggplot(data = jagsamp_df(), aes(x = 1:1000, y = eta)) + geom_line() + labs(xlab = "Last 1,000 iterations", ylab = "Sensitivity (eta)", title = "Trace plot for sensitivity")
+		ggplot(data = jagsamp_df(), aes(x = 1:1000, y = eta)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Sensitivity (eta)", title = "Trace plot for sensitivity")
 		})
-		
+	
+	output$traceplot_theta = renderPlot({
+		ggplot(data = jagsamp_df(), aes(x = 1:1000, y = theta)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Specificity (theta)", titel = "Trace plot for specificity")
+		})
 
 })
  
