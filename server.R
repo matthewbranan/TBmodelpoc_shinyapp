@@ -60,7 +60,8 @@ shinyServer(function(input, output){
 
 		})
 		
-
+## Output helper variables		
+	lastgrand = (input$MCMCreps / input$thinterval - 1000): (input$MCMCreps / input$thinterval)
 ## Creating outputs
 	# HPD intervals output
 	output$summary_hpdout = renderTable({
@@ -75,7 +76,7 @@ shinyServer(function(input, output){
 		
 	# Diagnostic plots
 	output$traceplot_eta = renderPlot({
-		jagsamp_df = data.frame(jagsamp_out()[[1]][(input$MCMCreps / input$thinterval - 1000): (input$MCMCreps / input$thinterval), ])
+		jagsamp_df = data.frame(jagsamp_out()[[1]][lastgrand, ])
 		ggplot(data = jagsamp_df, aes(x = 1:1000, y = eta)) + geom_line()
 		})
 
