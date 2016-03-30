@@ -63,7 +63,7 @@ shinyUI(fluidPage(
 			# Summary statistics
 			tabPanel("Summary statistics", tableOutput("summary_sumstatout")),
 			# Diagnostic plots
-			tabPanel("Diagnostic plots", plotOutput("traceplot_eta"))
+			tabPanel("Diagnostic plots", plotOutput("traceplot_eta"), plotOutput("traceplot_theta"))
 			)
 			
 		)
