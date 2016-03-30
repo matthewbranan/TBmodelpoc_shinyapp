@@ -44,6 +44,22 @@ shinyUI(fluidPage(
 			numericInput("thinterval", "Thinning interval:", value = 1)
 		
 			)
+		),
+		
+	mainPanel(
+		# Brief explanation of how to use application
+		
+		p("Explanation"),
+		
+		em("Notes"),
+		
+		br(),
+		
+		h2("95% HPD intervals"),
+		
+			# Create table for HPD intervals
+			tableOutput("summary_hpdout")
+			
 		)
 		
 	
