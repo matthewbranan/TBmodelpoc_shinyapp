@@ -41,12 +41,13 @@ shinyUI(fluidPage(
 			
 		column(4,
 			# Panel label
-			helpText("Technical, MCMC inputs"),
+			helpText("Technical and MCMC inputs"),
 		
 			# Input for the numebr of burnin iterations and number of iterations to keep
 			numericInput("burnin", "Burnin iterations:", value = 100),
 			numericInput("MCMCreps", "MCMC iterations:", value = 1000),
 			numericInput("thinterval", "Thinning interval:", value = 1),
+			sliderInput("digits", "Number of display digits:", min = 1, max = 16, value = 4),
 			actionButton("fitModel", "Fit model")
 		
 			)
