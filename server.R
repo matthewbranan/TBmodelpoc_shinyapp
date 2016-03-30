@@ -87,21 +87,17 @@ shinyServer(function(input, output){
 			output[[paste0("traceplot_", plotname)]] = renderPlot({
 				ggplot(data = jagsamp_df(), aes(x = 1:1000, y = get(plotname))) + geom_line() + labs(x = "Last 1,000 iterations", y = plotname, title = paste0("Trace plot for ", plotname))
 				})
+			
+			temp_acf = acf(jagsamp_df()[, plotname])
+			temp_acfdf = with(temp_acf, data.frame(lag, acf))
+			output[[paste0("acfplot_", plotname)]] = renderPlot({
+				ggplot(data = temp_acfdf, mapping = aes(x = lag, y = acf)) + geom_hline(aes(yintercept = 0)) + geom_segment(mapping = aes(xend = lag, yend = 0))
+				})
+				
 			})
 		
 		}
-	
-	#output$traceplot_eta = renderPlot({
-	#	ggplot(data = jagsamp_df(), aes(x = 1:1000, y = eta)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Sensitivity (eta)", title = "Trace plot for sensitivity")
-	#	})
-	
-	#output$traceplot_theta = renderPlot({
-	#	ggplot(data = jagsamp_df(), aes(x = 1:1000, y = theta)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Specificity (theta)", title = "Trace plot for specificity")
-	#	})
-		
-	#output$traceplot_pi = renderPlot({
-	#	ggplot(data = jagsamp_df(), aes(x = 1:1000, y = pi)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Prevalence (pi)", title = "Trace plot for prevalence")
-	#	})
+
 
 })
  
