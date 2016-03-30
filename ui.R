@@ -68,6 +68,8 @@ shinyUI(fluidPage(
 				plotOutput("traceplot_theta"), br(), 
 				plotOutput("traceplot_pi")),
 			tabPanel("Density plots",
+				plotOutput("densplot_eta"), br(),
+				plotOutput("densplot_theta"), br(),
 				plotOutput("densplot_pi"))
 			)
 			
