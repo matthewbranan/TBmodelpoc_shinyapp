@@ -1,4 +1,6 @@
 library(shiny)
+library(rjags)
+library(coda)
 
 
 # Define a UI structure
@@ -9,35 +11,36 @@ shinyUI(pageWithSidebar(
 	
 	sidebarPanel(
 	
-		# Include input for the (design) sample size
-		numericInput("n", "Sample size:", value = 30),
+		# Include input for the sample size
+		numericInput("n", "Sample size:", value = 100),
 		
-		# Include input for the desing prevalence
-		numericInput("dp", "Design prevalence:", value = 0.02),
+		# Include input for the number of positive subjects observed
+		numericInput("x", "Number of positive subjects:", value = 10),
 		
-		# Would like to give user some contorl over the (x-axis) plotting window
-		numericInput("minplot", "Minimum sample size in plot:", value = 1),
+		# Include input for hyperparameters for sensitivity
+		numericInput("alpha_eta", "alpha_eta", value = 10)  # expression(alpha[eta])
+		numericInput("beta_eta", "beta_eta", value = 1)  # expression(beta[eta])
 		
-		numericInput("maxplot", "Maximum sample size in plot:", value = 100)
+		# Include input for hyperparameters for specificity
+		numericInput("alpha_theta", "alpha_theta", value = 10)
+		numericInput("beta_theta", "beta_theta", value = 1)
 		
 		),
 		
 	mainPanel(
 	
 	# Give an explanation of the application and some caveats
-	p("This calculator is intented to be used to estimate an uninformative prior probability for disease as used in scenario tree-type models. The estimated uninformative prior probability is uninformative in the sense that it is the prior that forces the scenario tree model to produce the same results as a parallel Bayesian model using a Uniform(0, 1) prior distribution for disease prevalence."),
+	p("Explanation"),
 	
-	em("We note that this calculation should be considered a rough calculation because it is intended to be used to equate the output of a very simple scenario tree with a single herd, in a single year, in which no diagnostic test results were positive for the disease/pathogen in question, and no additional branches in the tree beyond the sensitivity of the diagnostic test used on individuals. This rough calculation should be secondary to a sensitivity analysis of a scenario tree model to the choice of prior probability of disease."),
+	em("Notes"),
 	
 	br(),
 	
-	h2("Estimated uninformed prior probability: "),
-		# Output the estimated uninformed prior probability
-		verbatimTextOutput("text"),
+	h2("95% HPD intervals: "),
 		
-		# Plot the results just like in the paper, keeping the plotting window at a standard size
-		div(class = "span6", plotOutput("priorprob_plot", width = "809px", height = "500px"))
-		
+		# Create table for HPD intervals
+		tableOutput("summary_hpdout")
+
 		)
 	
 )) 
