@@ -63,11 +63,18 @@ shinyServer(function(input, output){
 	summary_hpdout = reactive({
 		hpdout = round(HPDinterval(jagsamp_out(), 0.95)[[1]], input$digits)
 		})
+		
+	# Store table of summary statistics
+	summary_sumstatout = reactive({
+		temp_sumstatout = summary(jagsamp_out())
+		sumstatout = cbind(temp_sumstatout[[1]][, c(1, 2, 4)], tempsumstatout[[2]])
+		return(sumstatout)
+		})
 
 	# Make HPD intervals output
-	output$summary_hpdout = renderDataTable({
+	output$summary_hpdout = renderTable({
 		summary_hpdout()
-		})
+		}, digits = 16)
 
 
 })
