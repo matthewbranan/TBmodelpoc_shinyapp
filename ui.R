@@ -18,16 +18,16 @@ shinyUI(pageWithSidebar(
 		numericInput("x", "Number of positive subjects:", value = 10),
 		
 		# Input for hyperparameters for sensitivity
-		numericInput("alpha_eta", expression(alpha), value = 10),  # expression(alpha[eta])
-		numericInput("beta_eta", "beta_eta", value = 1),  # expression(beta[eta])
+		numericInput("alpha_eta", "alpha_eta:", value = 10),  # expression(alpha[eta])
+		numericInput("beta_eta", "beta_eta:", value = 1),  # expression(beta[eta])
 		
 		# Input for hyperparameters for specificity
-		numericInput("alpha_theta", "alpha_theta", value = 10),
-		numericInput("beta_theta", "beta_theta", value = 1),
+		numericInput("alpha_theta", "alpha_theta:", value = 10),
+		numericInput("beta_theta", "beta_theta:", value = 1),
 		
 		# Input for hyperparameters for prevalence
-		numericInput("alpha_pi", "alpha_pi", value = 1),
-		numericInput("beta_pi", "beta_pi", value = 1),
+		numericInput("alpha_pi", "alpha_pi:", value = 1),
+		numericInput("beta_pi", "beta_pi:", value = 1),
 		
 		# Input for the numebr of burnin iterations and number of iterations to keep
 		numericInput("burnin", "Burnin iterations:", value = 100),
