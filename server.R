@@ -78,17 +78,26 @@ shinyServer(function(input, output){
 		}, digits = 16)
 		
 	# Diagnostic plots
-	output$traceplot_eta = renderPlot({
-		ggplot(data = jagsamp_df(), aes(x = 1:1000, y = eta)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Sensitivity (eta)", title = "Trace plot for sensitivity")
-		})
 	
-	output$traceplot_theta = renderPlot({
-		ggplot(data = jagsamp_df(), aes(x = 1:1000, y = theta)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Specificity (theta)", title = "Trace plot for specificity")
-		})
+	for (i in 1:3){
+		plotname = c("eta", "theta", "pi")[i]
+		output[[paste0("traceplot_", plotname)]] = renderPlot({
+			ggplot(data = jagsamp_df(), aes(x = 1:1000, y = plotname)) + geom_line() + labs(x = "Last 1,000 iterations", y = capitalize(plotname), title = paste0("Trace plot for ", plotname))
+			})
 		
-	output$traceplot_pi = renderPlot({
-		ggplot(data = jagsamp_df(), aes(x = 1:1000, y = pi)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Prevalence (pi)", title = "Trace plot for prevalence")
-		})
+		}
+	
+	#output$traceplot_eta = renderPlot({
+	#	ggplot(data = jagsamp_df(), aes(x = 1:1000, y = eta)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Sensitivity (eta)", title = "Trace plot for sensitivity")
+	#	})
+	
+	#output$traceplot_theta = renderPlot({
+	#	ggplot(data = jagsamp_df(), aes(x = 1:1000, y = theta)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Specificity (theta)", title = "Trace plot for specificity")
+	#	})
+		
+	#output$traceplot_pi = renderPlot({
+	#	ggplot(data = jagsamp_df(), aes(x = 1:1000, y = pi)) + geom_line() + labs(x = "Last 1,000 iterations", y = "Prevalence (pi)", title = "Trace plot for prevalence")
+	#	})
 
 })
  
