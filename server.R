@@ -5,25 +5,23 @@ library(coda)
 # Define a server structure
 shinyServer(function(input, output){
 
-	# Construct the matrix of hyperparameters 
-	hyperparmmat = reactive({
-		matrix(c(
+	
+	jagsamp_out = reactive({
+		# Construct the matrix of hyperparameters 
+		hyperparmmat = matrix(c(
 			input$alpha_eta, input$beta_eta,
 			input$alpha_theta, input$beta_theta,
 			input$alpha_pi, input$beta_pi),
 			3, 2, byrow = TRUE)
-		})
-
-	# JAGS model data
-	jagsmod_dat = reactive({
-		list(
+			
+		# JAGS model data	
+		jagsmod_dat = list(
 			"x" = input$x,
 			"n" = input$n,
 			"hyperparmmat" = hyperparmmat()
 			)
-		})
-
-	# Define the JAGS function
+			
+		# Define the JAGS function
 	jagsmod_txt = "
 		model{
 			x ~ dbinom(phi, n)
@@ -35,34 +33,32 @@ shinyServer(function(input, output){
 			
 			}
 		"
-	
-	# Open up a text connection
-	jagsmod_txtconnect = textConnection(jagsmod_txt)
-	
-	# Compile the JAGS model
-	jagsmod = reactive({
-		jags.model(jagsmod_txtconnect,
+		
+		# Open up a text connection
+		jagsmod_txtconnect = textConnection(jagsmod_txt)
+		
+		# Compile the JAGS model
+		jagsmod = jags.model(jagsmod_txtconnect,
 			data = jagsmod_dat(),
 			n.adapt = 100,
 			n.chains = 1)
-		})
-	
-	# Burnin interval
-	jagsmod_update = reactive({
+			
+		# Burnin interval
 		update(jagsmod(), input$burnin)
-		})
-	
-	# Sample from the conditionals
-	jagsamp = reactive({
-		coda.samples(jagsmod(),
+		
+		# Sample from the conditionals
+		jagsamp = coda.samples(jagsmod(),
 			variable.names = c("pi", "eta", "theta"),
 			n.iter = input$MCMCreps,
 			thin = input$thinterval)
-		})
 			
+		return(jagsamp)
+
+		})
+
 	# Store table of HPD intervals
 	summary_hpdout = reactive({
-		hpdout = HPDinterval(jagsamp(), 0.95)[[1]]
+		hpdout = HPDinterval(jagsamp_out(), 0.95)[[1]]
 		})
 	
 	# Make HPD intervals output
