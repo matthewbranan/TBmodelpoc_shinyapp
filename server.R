@@ -7,6 +7,9 @@ shinyServer(function(input, output){
 
 	
 	jagsamp_out = reactive({
+		# Re-fit model upon pressing the "Fit model" button
+		input$fitModel
+	
 		# Construct the matrix of hyperparameters 
 		hyperparmmat = matrix(c(
 			input$alpha_eta, input$beta_eta,
@@ -66,7 +69,7 @@ shinyServer(function(input, output){
 		input$fitModel
 		summary_hpdout()
 		},
-		digits = 4)
+		digits = input$digits)
 	
 
 })
