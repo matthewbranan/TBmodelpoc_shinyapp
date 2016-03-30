@@ -18,7 +18,7 @@ shinyServer(function(input, output){
 		jagsmod_dat = list(
 			"x" = input$x,
 			"n" = input$n,
-			"hyperparmmat" = hyperparmmat()
+			"hyperparmmat" = hyperparmmat
 			)
 			
 		# Define the JAGS function
@@ -39,7 +39,7 @@ shinyServer(function(input, output){
 		
 		# Compile the JAGS model
 		jagsmod = jags.model(jagsmod_txtconnect,
-			data = jagsmod_dat(),
+			data = jagsmod_dat,
 			n.adapt = 100,
 			n.chains = 1)
 			
@@ -47,7 +47,7 @@ shinyServer(function(input, output){
 		update(jagsmod(), input$burnin)
 		
 		# Sample from the conditionals
-		jagsamp = coda.samples(jagsmod(),
+		jagsamp = coda.samples(jagsmod,
 			variable.names = c("pi", "eta", "theta"),
 			n.iter = input$MCMCreps,
 			thin = input$thinterval)
