@@ -34,19 +34,23 @@ shinyServer(function(input, output){
 	jagsmod_txtconnect = textConnection(jagsmod_txt)
 	
 	# Compile the JAGS model
-	jagsmod = jags.model(jagsmod_txtconnect,
-		data = jagsmod_dat(),
-		n.adapt = 100,
-		n.chains = 1)
+	jagsmod = reactive({
+		jags.model(jagsmod_txtconnect,
+			data = jagsmod_dat(),
+			n.adapt = 100,
+			n.chains = 1)
+		})
 	
 	# Burnin interval
 	update(jagsmod, burnin)
 	
 	# Sample from the conditionals
-	jagsamp = coda.samples(jagsmod,
-		variable.names = c("pi", "eta", "theta"),
-		n.iter = MCMCreps,
-		thin = thinterval)
+	jagsamp = reactive({
+		coda.samples(jagsmod,
+			variable.names = c("pi", "eta", "theta"),
+			n.iter = MCMCreps,
+			thin = thinterval)
+		})
 			
 	# Store table of HPD intervals
 	summary_hpdout = reactive({
