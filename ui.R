@@ -10,15 +10,20 @@ shinyUI(pageWithSidebar(
 	headerPanel("TB model proof of concept"),
 	
 	sidebarPanel(
-		# Labels for panel
+		# Panel label
 		p("Testing data inputs"),
 	
 		# Input for the sample size
 		numericInput("n", "Sample size:", value = 100),
 		
 		# Input for the number of positive subjects observed
-		numericInput("x", "Number of positive subjects:", value = 10),
-		
+		numericInput("x", "Number of positive subjects:", value = 10)
+		)
+	
+	sidebarPanel(
+		# Panel label
+		p("Hyperparameter inputs"),
+	
 		# Input for hyperparameters for sensitivity
 		numericInput("alpha_eta", "alpha_eta:", value = 10),  # expression(alpha[eta])
 		numericInput("beta_eta", "beta_eta:", value = 1),  # expression(beta[eta])
@@ -29,7 +34,12 @@ shinyUI(pageWithSidebar(
 		
 		# Input for hyperparameters for prevalence
 		numericInput("alpha_pi", "alpha_pi:", value = 1),
-		numericInput("beta_pi", "beta_pi:", value = 1),
+		numericInput("beta_pi", "beta_pi:", value = 1)
+		)
+	
+	sidebarPanel(
+		# Panel label
+		p("Technical, MCMC inputs"),
 		
 		# Input for the numebr of burnin iterations and number of iterations to keep
 		numericInput("burnin", "Burnin iterations:", value = 100),
