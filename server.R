@@ -75,7 +75,7 @@ shinyServer(function(input, output){
 		
 	# Diagnostic plots
 	output$traceplot_eta = renderPlot({
-		jagsamp_df = data.frame(jagsamp_out())
+		jagsamp_df = data.frame(jagsamp_out()[[1]])
 		ggplot(data = jagsamp_df, aes(x = 1:(input$MCMCreps / input$thinterval), y = eta)) + geom_line()
 		})
 
