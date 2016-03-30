@@ -7,23 +7,27 @@ library(coda)
 shinyUI(pageWithSidebar(
 
 	# App title
-	headerPanel("Quick-calculator for scenario tree prior probability"),
+	headerPanel("TB model proof of concept"),
 	
 	sidebarPanel(
 	
-		# Include input for the sample size
+		# Input for the sample size
 		numericInput("n", "Sample size:", value = 100),
 		
-		# Include input for the number of positive subjects observed
+		# Input for the number of positive subjects observed
 		numericInput("x", "Number of positive subjects:", value = 10),
 		
-		# Include input for hyperparameters for sensitivity
+		# Input for hyperparameters for sensitivity
 		numericInput("alpha_eta", "alpha_eta", value = 10),  # expression(alpha[eta])
 		numericInput("beta_eta", "beta_eta", value = 1),  # expression(beta[eta])
 		
-		# Include input for hyperparameters for specificity
+		# Input for hyperparameters for specificity
 		numericInput("alpha_theta", "alpha_theta", value = 10),
-		numericInput("beta_theta", "beta_theta", value = 1)
+		numericInput("beta_theta", "beta_theta", value = 1),
+		
+		# Input for the numebr of burnin iterations and number of iterations to keep
+		numericInput("burnin", "Burnin iterations:", value = 100),
+		numericInput("MCMCreps", "MCMC iterations:", value = 1000)
 		
 		),
 		
