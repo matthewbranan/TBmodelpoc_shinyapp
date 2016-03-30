@@ -44,7 +44,7 @@ shinyServer(function(input, output){
 			n.chains = 1)
 			
 		# Burnin interval
-		update(jagsmod(), input$burnin)
+		update(jagsmod, input$burnin)
 		
 		# Sample from the conditionals
 		jagsamp = coda.samples(jagsmod,
