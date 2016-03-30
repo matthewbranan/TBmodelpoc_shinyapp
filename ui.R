@@ -1,7 +1,7 @@
 library(shiny)
 library(rjags)
 library(coda)
-
+library(ggplot2)
 
 # Define a UI structure
 shinyUI(fluidPage(
@@ -58,10 +58,12 @@ shinyUI(fluidPage(
 	mainPanel(
 		# Set up panels for various types of output
 		tabsetPanel(
-			# Create table for HPD intervals
+			# HPD intervals
 			tabPanel("95% HPD intervals", tableOutput("summary_hpdout")),
-			# Create table for summary statistics
-			tabPanel("Summary statistics", tableOutput("summary_sumstatout"))
+			# Summary statistics
+			tabPanel("Summary statistics", tableOutput("summary_sumstatout")),
+			# Diagnostic plots
+			tabPanel("Diagnostic plots", plotOutput("traceplot_eta"))
 			)
 			
 		)
