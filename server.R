@@ -67,7 +67,7 @@ shinyServer(function(input, output){
 	# Store table of summary statistics
 	summary_sumstatout = reactive({
 		temp_sumstatout = summary(jagsamp_out())
-		sumstatout = cbind(temp_sumstatout[[1]][, c(1, 2, 4)], tempsumstatout[[2]])
+		sumstatout = cbind(temp_sumstatout[[1]][, c(1, 2, 4)], temp_sumstatout[[2]])
 		return(sumstatout)
 		})
 
