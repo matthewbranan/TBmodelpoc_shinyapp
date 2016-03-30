@@ -65,8 +65,7 @@ shinyServer(function(input, output){
 		})
 
 	# Make HPD intervals output
-	output$summary_hpdout = renderTable({
-		# input$fitModel
+	output$summary_hpdout = renderDataTable({
 		summary_hpdout()
 		},
 		digits = input$digits)
