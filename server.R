@@ -61,8 +61,8 @@ shinyServer(function(input, output){
 		})
 		
 ## Output helper variables		
-	lastgrand = reactive({
-		(input$MCMCreps / input$thinterval - 1000): (input$MCMCreps / input$thinterval)
+	jagsamp_df = reactive({
+		data.frame(jagsamp_out()[[1]][(input$MCMCreps / input$thinterval - 1000): (input$MCMCreps / input$thinterval), ])
 		})
 		
 ## Creating outputs
@@ -79,9 +79,9 @@ shinyServer(function(input, output){
 		
 	# Diagnostic plots
 	output$traceplot_eta = renderPlot({
-		jagsamp_df = data.frame(jagsamp_out()[[1]][lastgrand(), ])
-		ggplot(data = jagsamp_df, aes(x = 1:1000, y = eta)) + geom_line()
+		ggplot(data = jagsamp_df(), aes(x = 1:1000, y = eta)) + geom_line() + labs(xlab = "Last 1,000 iterations", ylab = "Sensitivity (eta)", title = "Trace plot for sensitivity")
 		})
+		
 
 })
  
