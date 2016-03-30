@@ -86,14 +86,15 @@ shinyServer(function(input, output){
 			output[[paste0("traceplot_", plotname)]] = renderPlot({
 				ggplot(data = jagsamp_df(), aes(x = 1:1000, y = get(plotname))) + geom_line() + labs(x = "Last 1,000 iterations", y = plotname, title = paste0("Trace plot for ", plotname))
 				})
-			
+				
+			output[[paste0("densplot_", plotname)]] = renderPlot({
+				ggplot(data = jagsamp_df(), aes(get(plotname))) + geom_histogram(aes(y = ..density..)) + geom_density(aes(y = ..density..))
+				})
 			})
 		
 		}
 
-	output$densplot_pi = renderPlot({
-		ggplot(data = jagsamp_df(), aes(eta)) + geom_histogram(aes(y = ..density..)) + geom_density(aes(y = ..density..))
-		})
+	
 
 })
  
