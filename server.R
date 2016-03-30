@@ -75,7 +75,11 @@ shinyServer(function(input, output){
 	output$summary_hpdout = renderTable({
 		summary_hpdout()
 		}, digits = 16)
-
+	
+	# Make summary statistics output
+	output$summary_sumstat = renderTable({
+		summary_sumstat()
+		}, digits = 16)
 
 })
  
