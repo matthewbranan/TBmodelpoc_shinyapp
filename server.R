@@ -88,7 +88,7 @@ shinyServer(function(input, output){
 				ggplot(data = jagsamp_df(), aes(x = 1:1000, y = get(plotname))) + geom_line() + labs(x = "Last 1,000 iterations", y = plotname, title = paste0("Trace plot for ", plotname))
 				})
 			
-			temp_acf = acf(jagsamp_df()[, plotname])
+			temp_acf = acf(jagsamp_df()[, plotname], plot = FALSE)
 			temp_acfdf = with(temp_acf, data.frame(lag, acf))
 			output[[paste0("acfplot_", plotname)]] = renderPlot({
 				ggplot(data = temp_acfdf, mapping = aes(x = lag, y = acf)) + geom_hline(aes(yintercept = 0)) + geom_segment(mapping = aes(xend = lag, yend = 0))
