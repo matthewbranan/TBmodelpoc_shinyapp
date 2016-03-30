@@ -48,7 +48,14 @@ shinyUI(fluidPage(
 			numericInput("MCMCreps", "MCMC iterations:", value = 1000),
 			numericInput("thinterval", "Thinning interval:", value = 1)
 		
-			)
+			),
+			
+		column(4,
+			actionButton("fitModel", "Fit model")
+			
+			),
+			
+			
 		),
 		
 	mainPanel(
