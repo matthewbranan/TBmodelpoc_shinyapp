@@ -61,7 +61,10 @@ shinyServer(function(input, output){
 		})
 		
 ## Output helper variables		
-	lastgrand = (input$MCMCreps / input$thinterval - 1000): (input$MCMCreps / input$thinterval)
+	lastgrand = reactive({
+		(input$MCMCreps / input$thinterval - 1000): (input$MCMCreps / input$thinterval)
+		})
+		
 ## Creating outputs
 	# HPD intervals output
 	output$summary_hpdout = renderTable({
