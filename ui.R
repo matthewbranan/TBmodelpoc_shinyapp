@@ -18,7 +18,10 @@ shinyUI(fluidPage(
 			numericInput("n", "Sample size:", value = 100),
 		
 			# Input for the number of positive subjects observed
-			numericInput("x", "Number of positive subjects:", value = 10),
+			numericInput("x", "Number of positive subjects:", value = 10)
+			),
+		
+		column(4, 
 	
 			# Panel label
 			p("Hyperparameter inputs"),
