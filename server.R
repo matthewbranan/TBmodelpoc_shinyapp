@@ -6,7 +6,13 @@ library(coda)
 shinyServer(function(input, output){
 
 	# Construct the matrix of hyperparameters 
-	
+	hyperparmmat = reactive({
+		matrix(c(
+			input$alpha_eta, input$beta_eta,
+			input$alpha_theta, input$beta_theta,
+			input$alpha_pi, input$beta_pi),
+			3, 2, byrow = TRUE)
+		})
 
 	# JAGS model data
 	jagsmod_dat = reactive({
