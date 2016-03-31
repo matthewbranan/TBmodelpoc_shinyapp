@@ -10,7 +10,8 @@ shinyUI(fluidPage(
 	# App title
 	headerPanel("TB model proof of concept"),
 	
-		em("This is a proof of concept for the TB model under construction. This particular application implements a simple beta-binomial Bayesian model that takes the number of subjects sampled and tested, the number that tested positive, the prior (beta) distributions for the sensitivity and specificity of the diagnostic test used and the prevalence, along with some more technical inputs such as the number of MCMC iterations and burnin."),
+		# Some explanation and a note about prior elicitation
+		p("This is a proof of concept for the TB model under construction. This particular application implements a simple beta-binomial Bayesian model that takes the number of subjects sampled and tested, the number that tested positive, the prior (beta) distributions for the sensitivity and specificity of the diagnostic test used and the prevalence, along with some more technical inputs such as the number of MCMC iterations and burnin."),
 
 		br(),
 		
