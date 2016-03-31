@@ -29,7 +29,7 @@ shinyServer(function(input, output){
 	jagsmod_txt = "
 		model{
 			x ~ dbinom(phi, n)
-			phi = pi * eta + (1 - pi) * (1 - theta)
+			phi <- pi * eta + (1 - pi) * (1 - theta)
 			
 			eta ~ dbeta(hyperparmmat[1, 1], hyperparmmat[1, 2])
 			theta ~ dbeta(hyperparmmat[2, 1], hyperparmmat[2, 2])
