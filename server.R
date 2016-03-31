@@ -2,10 +2,18 @@ library(shiny)
 library(rjags)
 library(coda)
 library(ggplot2)
+library(epiR)
 
 # Define a server structure
 shinyServer(function(input, output){
 
+	alphabeta_eta_out = reactive({
+		eta_bb = epi.betabuster(input$etamode, 0.95, TRUE, eta_5thperc)
+		if(input$select_eta == input$straightbeta){
+			c(input$alpha_eta, input$beta_eta)
+			} else{
+				c(eta_bb$shape1, eta_bb$shape2)
+				}
 	
 	jagsamp_out = reactive({
 		# Re-fit model upon pressing the "Fit model" button
