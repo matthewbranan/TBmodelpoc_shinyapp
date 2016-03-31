@@ -34,7 +34,7 @@ shinyUI(fluidPage(
 				),
 			
 			conditionalPanel(condition = "input.select_etatheta == 'straightbeta'",
-				numericInput("alpha_eta", "Sensitivity alpha parameter:", value = 10),  # expression(alpha[eta])
+				numericInput("alpha_eta", "Sensitivity alpha parameter:"),  # expression(alpha[eta])
 				numericInput("beta_eta", "Sensitivity beta parameter:", value = 1)  # expression(beta[eta])
 				),
 				
