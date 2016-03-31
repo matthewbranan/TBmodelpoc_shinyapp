@@ -2,6 +2,7 @@ library(shiny)
 library(rjags)
 library(coda)
 library(ggplot2)
+library(epiR)
 
 # Define a UI structure
 shinyUI(fluidPage(
@@ -28,8 +29,8 @@ shinyUI(fluidPage(
 	
 			# Input for hyperparameters for sensitivity
 			selectInput("select_eta", "Method for eliciting prior sensitivity distribution:", 
-				list("Elicit beta distribution parameters" = "straightbeta",
-					"Elicit using mode and 5th percentile" = "betabuster")
+				list("Specify alpha and beta hyperparameters manually" = "straightbeta",
+					"Specify prior distirbution using mode and 5th percentile" = "betabuster")
 				),
 			
 			conditionalPanel(condition = "select_eta == straightbeta",
