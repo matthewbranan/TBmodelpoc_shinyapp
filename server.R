@@ -7,12 +7,21 @@ library(epiR)
 # Define a server structure
 shinyServer(function(input, output){
 
-	alphabeta_eta_out = reactive({
-		eta_bb = epi.betabuster(input$etamode, 0.95, TRUE, eta_5thperc)
+	# Handle conditional choice of method to specify prior distirbutions for sensitivity and specificity
+	alphabeta_etatheta_out = reactive({
+		
 		if(input$select_eta == input$straightbeta){
-			c(input$alpha_eta, input$beta_eta)
+			matrix(c(
+				input$alpha_eta, input$beta_eta,
+				input$alpha_theta, input$beta_theta),
+				2, 2, byrow = TRUE)
 			} else{
-				c(eta_bb$shape1, eta_bb$shape2)
+				eta_bb = epi.betabuster(input$etamode, 0.95, TRUE, input$eta_5thperc)
+				theta_bb = epi.betabuster(input$thetamode, 0.95, TRUE, input$theta_5thperc)
+				matrix(c(
+					eta_bb$shape1, eta_bb$shape2,
+					theta_bb$shape1, theta_bb$shape2),
+					2, 2, byrow = TRUE)
 				}
 		})
 	
