@@ -24,12 +24,24 @@ shinyUI(fluidPage(
 		column(4, 
 	
 			# Panel label
-			helpText("Hyperparameter inputs"),
+			helpText("Hyperparameter inputs for prior parameters"),
 	
 			# Input for hyperparameters for sensitivity
-			numericInput("alpha_eta", "alpha_eta:", value = 10),  # expression(alpha[eta])
-			numericInput("beta_eta", "beta_eta:", value = 1),  # expression(beta[eta])
-		
+			selectInput("select_eta", "Method for eliciting prior sensitivity distribution:", 
+				list("Elicit beta distribution parameters" = "straightbeta",
+					"Elicit using mode and 5th percentile" = "betabuster")
+				),
+			
+			conditionalPanel(condition = "select_eta == straightbeta",
+				numericInput("alpha_eta", "alpha_eta:", value = 10),  # expression(alpha[eta])
+				numericInput("beta_eta", "beta_eta:", value = 1)  # expression(beta[eta])
+				),
+				
+			conditionalPanel(condition = "select_eta == betabuster",
+				numericInput("eta_mode", "Mode (most likely value):", value = 0.5),
+				numericInput("eta_5thperc", "5th percentile (value above which sensitivity occurs 95% of the time):", value = 0.25)
+				),
+				
 			# Input for hyperparameters for specificity
 			numericInput("alpha_theta", "alpha_theta:", value = 10),
 			numericInput("beta_theta", "beta_theta:", value = 1),
@@ -47,7 +59,7 @@ shinyUI(fluidPage(
 			numericInput("burnin", "Burnin iterations:", value = 100),
 			numericInput("MCMCreps", "MCMC iterations:", value = 1000),
 			numericInput("thinterval", "Thinning interval:", value = 1),
-			numericInput("digits", "Number of display digits:", value = 4),
+			sliderInput("digits", "Number of display digits:", min = 1, max = 16, value = 4),
 			# sliderInput("digits", "Number of display digits:", min = 1, max = 16, value = 4),
 			actionButton("fitModel", "Fit model")
 		
