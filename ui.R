@@ -10,6 +10,12 @@ shinyUI(fluidPage(
 	# App title
 	headerPanel("TB model proof of concept"),
 	
+		em("This is a proof of concept for the TB model under construction. This particular application implements a simple beta-binomial Bayesian model that takes the number of subjects sampled and tested, the number that tested positive, the prior (beta) distributions for the sensitivity and specificity of the diagnostic test used and the prevalence, along with some more technical inputs such as the number of MCMC iterations and burnin."),
+
+		br(),
+		
+		em("Notice, the user can choose to input the hyperparameters for the prior distributions for sensitivity and specificity by simply supplying the two shape parameters (alpha and beta) directly or they can choose to input the mode and 5th percentil of the sensitivity and specificity and let BetaBuster choose the appropriate parameters from that information."),
+	
 	fluidRow(
 		column(4,
 			# Panel label
@@ -34,7 +40,7 @@ shinyUI(fluidPage(
 				),
 			
 			conditionalPanel(condition = "input.select_etatheta == 'straightbeta'",
-				numericInput("alpha_eta", "Sensitivity alpha parameter:", value = NA),  # expression(alpha[eta])
+				numericInput("alpha_eta", "Sensitivity alpha parameter:", value = 10),  # expression(alpha[eta])
 				numericInput("beta_eta", "Sensitivity beta parameter:", value = 1)  # expression(beta[eta])
 				),
 				
