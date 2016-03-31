@@ -14,6 +14,7 @@ shinyServer(function(input, output){
 			} else{
 				c(eta_bb$shape1, eta_bb$shape2)
 				}
+		}),
 	
 	jagsamp_out = reactive({
 		# Re-fit model upon pressing the "Fit model" button
