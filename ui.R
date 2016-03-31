@@ -33,12 +33,12 @@ shinyUI(fluidPage(
 					"Specify prior distirbution using mode and 5th percentile" = "betabuster")
 				),
 			
-			conditionalPanel(condition = "select_eta == straightbeta",
+			conditionalPanel(condition = "input.select_eta == 'straightbeta'",
 				numericInput("alpha_eta", "alpha_eta:", value = 10),  # expression(alpha[eta])
 				numericInput("beta_eta", "beta_eta:", value = 1)  # expression(beta[eta])
 				),
 				
-			conditionalPanel(condition = "select_eta == betabuster",
+			conditionalPanel(condition = "input.select_eta == 'betabuster'",
 				numericInput("eta_mode", "Mode (most likely value):", value = 0.5),
 				numericInput("eta_5thperc", "5th percentile (value above which sensitivity occurs 95% of the time):", value = 0.25)
 				),
