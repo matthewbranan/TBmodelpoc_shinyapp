@@ -3,6 +3,7 @@ library(rjags)
 library(coda)
 library(ggplot2)
 library(epiR)
+library(DT)
 
 # Define a server structure
 shinyServer(function(input, output){
