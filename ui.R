@@ -86,7 +86,7 @@ shinyUI(fluidPage(
 		# Set up panels for various types of output
 		tabsetPanel(
 			# HPD intervals
-			tabPanel("95% HPD intervals", tableOutput("summary_hpdout")),
+			tabPanel("95% HPD intervals", dataTableOutput("summary_hpdout")),
 			# Summary statistics
 			tabPanel("Summary statistics", tableOutput("summary_sumstatout")),
 			# Diagnostic plots
