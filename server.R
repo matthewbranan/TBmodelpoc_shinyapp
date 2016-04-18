@@ -90,10 +90,10 @@ shinyServer(function(input, output){
 		}, digits = input$digits) })
 	
 	# Summary statistics output
-	output$summary_sumstatout = reactive({renderTable({
+	output$summary_sumstatout = renderTable({
 		temp_sumstatout = summary(jagsamp_out())
 		round(cbind(temp_sumstatout[[1]][, c(1, 2, 4)], temp_sumstatout[[2]]), input$digits)
-		}, digits = input$digits)})
+		}, digits = input$digits)
 		
 	# Diagnostic plots
 	
