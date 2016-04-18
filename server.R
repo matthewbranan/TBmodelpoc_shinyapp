@@ -87,7 +87,7 @@ shinyServer(function(input, output){
 	# HPD intervals output
 	output$summary_hpdout = renderTable({
 		round(HPDinterval(jagsamp_out(), 0.95)[[1]], input$digits)
-		}, digits = input$digits) })
+		}, digits = input$digits)
 	
 	# Summary statistics output
 	output$summary_sumstatout = renderTable({
